@@ -64,7 +64,7 @@ func New() *Config {
     return &Config{
         ConfigPath:     "@app_confdir@/tanakh.yml",
         LibDir:         "@app_libdir@",
-        DatabasePath:   "@app_confdir@/tanakh.db",
+        DatabasePath:   "@app_databasedir@/tanakh.db",
         PidPath:        "@app_rundir@/tanakh.pid",
         MessageLogPath: "@app_logdir@/message.log",
         AccessLogPath:  "@app_logdir@/access.log",
