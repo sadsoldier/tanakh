@@ -30,6 +30,6 @@
 
 ## Результат сборки включает
 
-- Execute file `tanakh` with enbedded Angular frontend (CSS/HTML/JS)
+- Executable file `tanakh` with enbedded Angular frontend (CSS/HTML/JS)
 - Database tanakh.db
 
