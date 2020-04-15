@@ -2,7 +2,6 @@
 *.log
 *.pid
 *.bin
-*.db
 *.geany
 *.map
 node_modules/
