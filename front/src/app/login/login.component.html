@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-sm sticky-top navbar-dark bg-dark mb-4">
+    <span class="navbar-text ml-3">
+        <i class="fab fa-old-republic fa-lg"></i>
+        M5 Login
+    </span>
+
+    <ul class="nav justify-content-end ml-auto">
+
+    </ul>
+</nav>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-8 col-sm-6 col-md-4 border p-4 mt-sm-5 ml-3 mr-3">
+
+            <form accept-charset="UTF-8" [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+
+                <div class="form-group">
+                    <label for="username">Login name:</label>
+                    <input id="username" class="form-control" type="text" formControlName="username" />
+
+                    <small *ngIf="loginFormUsername.invalid && (loginFormUsername.dirty || loginFormUsername.touched)" class="form-text text-muted">
+                        <span *ngIf="loginFormUsername.errors.required">Value is required</span>
+                    </small>
+
+
+                </div>
+
+                <div class="form-group">
+                    <label>Password:</label>
+                    <input id="password" class="form-control" type="password" formControlName="password" />
+
+                    <small *ngIf="loginFormPassword.invalid && (loginFormPassword.dirty || loginFormPassword.touched)" class="form-text text-muted">
+                        <span *ngIf="loginFormPassword.errors.required">Value is required</span>
+                    </small>
+
+                </div>
+
+                <div class="text-center">
+                    <button class="btn btn-primary btn-sm" type="submit" [disabled]="!loginForm.valid">Submit</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col mt-5">
+            <hr class="justify-content-sm-center" />
+            <div class="text-center">
+                <small>made by <a href="http://wiki.unix7.org">oleg borodin</a></small>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,95 @@
+
+<!-- Copyright 2020 Oleg Borodin <borodin@unix7.org> -->
+
+<layout>
+
+    <h5>Sample</h5>
+
+    <!-- Alert box -->
+    <ng-container *ngIf="alertMessage">
+        <div class="alert alert-danger" role="alert" id="alert">
+            <button type="button" class="close" (click)="dismissAlert()">
+                <span>&times;</span>
+            </button>
+            {{ alertMessage }}
+        </div>
+    </ng-container>
+
+    <!-- Notice box -->
+    <ng-container *ngIf="noticeMessage">
+        <div class="alert alert-success" role="alert" id="notice">
+            <button type="button" class="close" (click)="dismissNotice()">
+                <span>&times;</span>
+            </button>
+            {{ noticeMessage }}
+        </div>
+    </ng-container>
+
+    <!-- Select form -->
+    <form accept-charset="UTF-8" [formGroup]="selectForm">
+        <div class="form-row">
+
+            <div class="col-8">
+
+                <div class="input-group input-group-sm flex-nowrap">
+
+                     <select class="form-control" formControlName="region" id="region-select">
+                       <option [value]="region" *ngFor="let region of regions"> {{region}}</option>
+                     </select>
+                </div>
+            </div>
+
+        </div>
+    </form>
+
+    <!-- Samples table -->
+    <ng-container *ngIf="samples.subgroups">
+        <table class="table table-striped table-hover table-sm">
+
+            <thead class="thead-light">
+                <tr>
+                    <th>#</th>
+                    <th>Подгруппа</th>
+
+                    <th class="text-right">2010</th>
+                    <th class="text-right">2011</th>
+                    <th class="text-right">2012</th>
+                    <th class="text-right">2013</th>
+                    <th class="text-right">2014</th>
+                    <th class="text-right">2015</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <ng-container *ngFor="let item of samples.subgroups; let i = index">
+                    <tr>
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ item.subgroup }}</td>
+                        <td class="text-right">{{ item.point0 | number:'4.0-5' }}</td>
+                        <td class="text-right">{{ item.point1 | number:'4.0-5' }}</td>
+                        <td class="text-right">{{ item.point2 | number:'4.0-5' }}</td>
+                        <td class="text-right">{{ item.point3 | number:'4.0-5' }}</td>
+                        <td class="text-right">{{ item.point4 | number:'4.0-5' }}</td>
+                        <td class="text-right">{{ item.point5 | number:'4.0-5' }}</td>
+                    </tr>
+                </ng-container>
+                <ng-container *ngFor="let item of samples.total; let i = index">
+                    <tr>
+                        <td></td>
+                        <td><b>Total</b></td>
+                        <td class="text-right"><b>{{ item.point0 | number:'4.0-5' }}</b></td>
+                        <td class="text-right"><b>{{ item.point1 | number:'4.0-5' }}</b></td>
+                        <td class="text-right"><b>{{ item.point2 | number:'4.0-5' }}</b></td>
+                        <td class="text-right"><b>{{ item.point3 | number:'4.0-5' }}</b></td>
+                        <td class="text-right"><b>{{ item.point4 | number:'4.0-5' }}</b></td>
+                        <td class="text-right"><b>{{ item.point5 | number:'4.0-5' }}</b></td>
+                    </tr>
+                </ng-container>
+            </tbody>
+
+        </table>
+
+    </ng-container>
+
+
+</layout>

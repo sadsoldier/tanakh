@@ -1,0 +1,121 @@
+
+<!-- Copyright 2020 Oleg Borodin <borodin@unix7.org> -->
+
+<nav>
+    <ul class="pagination pagination-sm">
+
+        <ng-container *ngIf="total > (limit - 1024)">
+
+            <ng-container *ngIf="currentPage() > 1">
+                <li class="page-item" (click)="onCellClick(currentPage() - 1)">
+                    <div class="page-link">
+                        <small>&laquo;</small>
+                    </div>
+                </li>
+            </ng-container>
+
+            <ng-container *ngIf="currentPage() == 0">
+                <li class="page-item disabled">
+                    <div class="page-link">
+                        <small>&laquo;</small>
+                    </div>
+                </li>
+            </ng-container>
+
+            <ng-container *ngFor="let item of pageArray(); let i = index;">
+
+                <!-- always show current page cell -->
+                <ng-container *ngIf="i == currentPage()">
+                     <li class="page-item active" (click)="onCellClick(i)">
+                            <div class="page-link">
+                                <small>{{ showRange(i) }}</small>
+                            </div>
+                     </li>
+                </ng-container>
+
+                <!-- for not current page cell -->
+                <ng-container *ngIf="i != currentPage()">
+
+                    <!-- always show first page cell -->
+                    <ng-container *ngIf="i == 0">
+                         <li class="page-item" (click)="onCellClick(i)">
+                                <div class="page-link">
+                                    <small>{{ showRange(i) }}</small>
+                                </div>
+                         </li>
+                    </ng-container>
+
+                    <!-- always show last page cell -->
+                    <ng-container *ngIf="i == countPages() - 1">
+                         <li class="page-item" (click)="onCellClick(i)">
+                                <div class="page-link">
+                                    <small>{{ showRange(i) }}</small>
+                                </div>
+                         </li>
+                    </ng-container>
+
+                    <!-- for not last or first page cell -->
+                    <ng-container *ngIf="i != 0 && i != countPages() - 1 ">
+                        <!-- subrange lower of current cell -->
+                        <ng-container *ngIf="i > (currentPage() - 3) && i < currentPage()">
+                             <li class="page-item" (click)="onCellClick(i)">
+                                    <div class="page-link">
+                                        <small>{{ showRange(i) }}</small>
+                                    </div>
+                             </li>
+                        </ng-container>
+
+                        <!-- subrabge upper of cuttern cell -->
+                        <ng-container *ngIf="i > currentPage() && i < (currentPage() + 3)">
+                             <li class="page-item" (click)="onCellClick(i)">
+                                    <div class="page-link">
+                                        <small>{{ showRange(i) }}</small>
+                                    </div>
+                             </li>
+                        </ng-container>
+
+                        <!-- low bordure page cell -->
+                        <ng-container *ngIf="i == (currentPage() - 3)">
+                             <li class="page-item" (click)="onCellClick(i)">
+                                    <div class="page-link">
+                                        <small>...</small>
+                                    </div>
+                             </li>
+                        </ng-container>
+
+                        <!-- upper bordure page cell -->
+                       <ng-container *ngIf="i == (currentPage() + 3)">
+                             <li class="page-item" (click)="onCellClick(i)">
+                                    <div class="page-link">
+                                        <small>...</small>
+                                    </div>
+                             </li>
+                        </ng-container>
+
+                    </ng-container> <!-- *ngIf="i != 0 && i != countPages()" -->
+
+                </ng-container> <!-- *ngIf="i != currentPage()" -->
+
+            </ng-container> <!-- *ngFor="let item of pageArray(); let i = index;" -->
+
+            <ng-container *ngIf="currentPage() < (countPages() - 1)">
+                <li class="page-item" (click)="onCellClick(currentPage() + 1)">
+                    <div class="page-link">
+                        <small>&raquo;</small>
+                    </div>
+                </li>
+            </ng-container>
+
+            <ng-container *ngIf="currentPage() == (countPages() - 1)">
+                <li class="page-item disabled">
+                    <div class="page-link">
+                        <small>&raquo;</small>
+                    </div>
+                </li>
+            </ng-container>
+
+        </ng-container>
+
+
+    </ul>
+</nav>

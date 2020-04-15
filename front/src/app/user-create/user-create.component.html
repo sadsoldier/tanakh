@@ -1,0 +1,65 @@
+<ng-container>
+
+    <a (click)="showForm()"><i class="fas fa-plus fa-lg"></i></a>
+
+    <div class="modal fade" id="{{ modalId() }}" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+
+            <div class="modal-content">
+
+                <form accept-charset="UTF-8" [formGroup]="form" (ngSubmit)="createUser(form)">
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Create user</h5>
+                        <button type="button" class="close" (click)="dismissForm()">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label for="{{ formId('username') }}">Username:</label>
+                            <input type="text" class="form-control" id="{{ formId('username') }}" formControlName="username">
+
+                            <small *ngIf="formUsername.invalid && (formUsername.dirty || formUsername.touched)" class="form-text text-muted">
+                                <span *ngIf="formUsername.errors.required">Value is required</span>
+                                <span *ngIf="formUsername.errors.minlength">Value is too short</span>
+                            </small>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="{{ formId('password') }}">Password:</label>
+                            <input type="text" class="form-control" id="{{ formId('password') }}" formControlName="password">
+
+                            <small *ngIf="formPassword.invalid && (formPassword.dirty || formPassword.touched)" class="form-text text-muted">
+                                <span *ngIf="formPassword.errors.required">Value is required</span>
+                                <span *ngIf="formPassword.errors.minlength">Value is too short</span>
+                            </small>
+                        </div>
+
+                        <div class="form-group form-check">
+                            <input id="{{ formId('superuser') }}" class="form-check-input" type="checkbox" formControlName="isadmin" />
+                            <label class="form-check-label" for="{{ formId('superuser') }}"> Admin role </label>
+                        </div>
+
+
+                    </div>
+
+                    <div *ngIf="this.alertMessage" class="alert alert-warning border mx-4" role="alert">
+                        <div class="text-center">{{ this.alertMessage }}</div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-secondary" (click)="dismissForm()">Cancel</button>
+                        <button type="submit" class="btn btn-sm btn-primary" [disabled]="!form.valid">Create</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</ng-container>

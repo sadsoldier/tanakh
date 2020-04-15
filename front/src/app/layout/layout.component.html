@@ -1,0 +1,65 @@
+
+<!-- Copyright 2020 Oleg Borodin <borodin@unix7.org> -->
+
+<nav class="navbar navbar-expand-sm sticky-top navbar-dark bg-dark">
+
+    <button class="btn m-0 p-0" data-target="#menu" data-toggle="collapse" role="button">
+        <div class="d-block d-sm-block d-md-none mr-3">
+            <i class="fa fa-bars fa-lg" style="color: #FFFFFF;"></i>
+        </div>
+
+    </button>
+
+    <div class="btn m-0 p-0">
+        <div class="d-none d-md-block mr-3">
+            <i class="fa fa-bars fa-lg" style="color: #FFFFFF;"></i>
+        </div>
+    </div>
+
+    <div class="navbar-brand">
+        <i class="fab fa-old-republic fa-lg"></i> TH
+    </div>
+
+    <ul class="nav justify-content-end ml-auto mr-3">
+        <li class="nav-item">
+            <div (click)="logout()"><i class="fas fa-sign-out-alt fa-lg"></i></div>
+        </li>
+    </ul>
+
+</nav>
+
+
+<div class="container-fluid">
+
+    <div class="row">
+
+        <div id="menu" class="overlay fade collapse col-5 col-sm-3 col-md-2 col-lg-2 col-xl-2 d-md-none d-lg-none d-xl-none bg-dark">
+            <div class="sticky-top">
+                <menu class="px-0 py-0 my-0 mx-0"></menu>
+            </div>
+        </div>
+
+        <div class="col-5 col-sm-3 col-md-2 col-lg-2 col-xl-2 d-none d-md-block d-lg-block d-xl-block bg-dark" style="max-width: 12em;">
+            <div class="sticky-top sticky-offset">
+                <menu class="px-0 py-0 my-0 mx-0"></menu>
+            </div>
+        </div>
+
+        <div class="col col-12 col-sm-11 col-md-9 col-lg-8 mt-4 mx-auto">
+            <ng-content></ng-content>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col my-3">
+            <hr class="justify-content-sm-center" />
+            <div class="text-center">
+                <small>made by <a href="http://wiki.unix7.org">oleg borodin</a></small>
+            </div>
+        </div>
+    </div>
+</div>
